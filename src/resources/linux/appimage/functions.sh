@@ -239,7 +239,7 @@ generate_type2_appimage()
     wget https://github.com/AppImage/AppImageKit/files/584665/data.zip -O data.tar.gz.gpg
     ( set +x ; echo $KEY | gpg2 --batch --passphrase-fd 0 --no-tty --skip-verify --output data.tar.gz --decrypt data.tar.gz.gpg )
     tar xf data.tar.gz
-    sudo chown -R $USER .gnu*
+    chown -R $USER .gnu*
     mv $HOME/.gnu* $HOME/.gnu_old ; mv .gnu* $HOME/
     VERSION=$VERSION_EXPANDED "$appimagetool" $@ -n -s --bintray-user $BINTRAY_USER --bintray-repo $BINTRAY_REPO -v ./$APP.AppDir/
   else
